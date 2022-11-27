@@ -125,18 +125,15 @@ def delete_accounts(account_id):
     This endpoint will delete an Account based on the account_id that is requested
     """
     app.logger.info("Request to delete an Account with id: %s", account_id)
-
     account = Account.find(account_id)
     if account:
         account.delete()
-
     return "", status.HTTP_204_NO_CONTENT
 
 
 ######################################################################
 #  U T I L I T Y   F U N C T I O N S
 ######################################################################
-
 
 def check_content_type(media_type):
     """Checks that the media type is correct"""
@@ -145,3 +142,5 @@ def check_content_type(media_type):
         return
     app.logger.error("Invalid Content-Type: %s", content_type)
     abort(status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,f"Content-Type must be {media_type}",)
+    
+    
