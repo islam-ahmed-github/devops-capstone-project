@@ -111,13 +111,12 @@ def update_accounts(account_id):
     account.deserialize(request.get_json())
     account.update()
     return account.serialize(), status.HTTP_200_OK
- 
-    
-    
+
+
 ######################################################################
 # DELETE AN ACCOUNT
 ######################################################################
- 
+
 @app.route("/accounts/<int:account_id>", methods=["DELETE"])
 def delete_accounts(account_id):
     """
@@ -141,6 +140,4 @@ def check_content_type(media_type):
     if content_type and content_type == media_type:
         return
     app.logger.error("Invalid Content-Type: %s", content_type)
-    abort(status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,f"Content-Type must be {media_type}",)
-    
-    
+    abort(status.HTTP_415_UNSUPPORTED_MEDIA_TYPE, f"Content-Type must be {media_type}", )
